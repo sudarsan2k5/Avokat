@@ -16,11 +16,11 @@ interface MongooseCache {
   promise: Promise<typeof mongoose> | null;
 }
 
-// @ts-ignore
+// @ts-expect-error - global mongoose is not typed
 let cached: MongooseCache = global.mongoose;
 
 if (!cached) {
-  // @ts-ignore
+  // @ts-expect-error - global mongoose is not typed
   cached = global.mongoose = { conn: null, promise: null };
 }
 

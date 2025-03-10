@@ -69,8 +69,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } else {
         router.push('/dashboard');
       }
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong');
     } finally {
       setIsLoading(false);
     }
@@ -95,8 +95,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       return;
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong');
       throw err;
     } finally {
       setIsLoading(false);

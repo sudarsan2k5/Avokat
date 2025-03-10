@@ -38,8 +38,8 @@ export default function ForgotPasswordPage() {
       if (data.resetToken) {
         console.log('Reset token:', data.resetToken);
       }
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong');
     } finally {
       setIsLoading(false);
     }
@@ -54,7 +54,7 @@ export default function ForgotPasswordPage() {
             Forgot Password
           </h1>
           <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto">
-            Enter your email address and we'll send you a link to reset your password.
+            Enter your email address and we will send you a link to reset your password.
           </p>
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function ForgotPasswordPage() {
               </div>
               <h2 className="text-2xl font-bold mb-4">Check Your Email</h2>
               <p className="text-gray-600 mb-6">
-                We've sent a password reset link to your email address. Please check your inbox and follow the instructions.
+                We have sent a password reset link to your email address. Please check your inbox and follow the instructions.
               </p>
               <Link href="/login">
                 <button className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-md transition-colors">

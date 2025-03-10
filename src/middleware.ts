@@ -1,21 +1,9 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
-  // Get the pathname of the request
-  const path = request.nextUrl.pathname;
-
-  // Define public paths that don't require authentication
-  const isPublicPath = path === '/login' || 
-                       path === '/forgot-password' || 
-                       path === '/' || 
-                       path.startsWith('/api/');
-
-  // Check if user is authenticated by looking for the user item in localStorage
-  // Note: This is a client-side check, so we can't do this in middleware
-  // Instead, we'll handle this in the component itself
-  
+// This function can be marked `async` if using `await` inside
+export function middleware() {
   // For now, we'll just allow all requests
+  // We'll handle authentication in the components
   return NextResponse.next();
 }
 
