@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -41,20 +42,20 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">Immigration</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Matrimonial</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Property</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Personal</a></li>
+              <li><Link href="/services" className="text-gray-400 hover:text-white">Immigration</Link></li>
+              <li><Link href="/services" className="text-gray-400 hover:text-white">Matrimonial</Link></li>
+              <li><Link href="/services" className="text-gray-400 hover:text-white">Property</Link></li>
+              <li><Link href="/services" className="text-gray-400 hover:text-white">Personal</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Our Team</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Careers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Contact Us</a></li>
+              <li><Link href="/about" className="text-gray-400 hover:text-white">Translator</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white">Our Team</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white">Careers</Link></li>
+              <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact Us</Link></li>
             </ul>
           </div>
           
