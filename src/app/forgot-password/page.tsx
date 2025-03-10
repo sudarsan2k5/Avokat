@@ -25,7 +25,13 @@ export default function ForgotPasswordPage() {
         body: JSON.stringify({ email }),
       });
 
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        console.error('Error parsing JSON response:', jsonError);
+        throw new Error('Server returned an invalid response. Please try again later.');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Failed to process request');
@@ -40,6 +46,7 @@ export default function ForgotPasswordPage() {
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong');
+      console.error('Forgot password error:', err);
     } finally {
       setIsLoading(false);
     }
