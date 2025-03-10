@@ -23,12 +23,19 @@ export default function Navbar(){
                     <Link href="/contact" className="text-gray-700 hover:text-gray-900 font-medium">Contact</Link>
                 </div>
 
-                <div className="md:hidden">
-                    <button className="text-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
+                <div className="flex items-center">
+                    <Link href="/login">
+                        <button className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-md transition-colors">
+                            Login
+                        </button>
+                    </Link>
+                    <div className="md:hidden ml-4">
+                        <button className="text-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
