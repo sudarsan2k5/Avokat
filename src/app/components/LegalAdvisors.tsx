@@ -17,7 +17,7 @@ export default function LegalAdvisors(){
                 <div className="bg-amber-50 p-8 rounded-lg flex flex-col justify-center">
                     <h3 className="text-2xl font-bold mb-4">Expert Legal Guidance</h3>
                     <p className="text-gray-700 mb-6">
-                        Our team of experienced legal professionals is dedicated to providing you with the highest quality legal services. We understand that legal matters can be complex and stressful, which is why we're committed to making the process as smooth and straightforward as possible.
+                        Our team of experienced legal professionals is dedicated to providing you with the highest quality legal services. We understand that legal matters can be complex and stressful, which is why we&apos;re committed to making the process as smooth and straightforward as possible.
                     </p>
                     <ul className="space-y-3">
                         <li className="flex items-center">

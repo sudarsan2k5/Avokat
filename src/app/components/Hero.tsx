@@ -16,7 +16,7 @@ export default function Hero(){
                         </h1>
                         <p className="font-poppins text-white/80 text-base md:text-lg mb-8">
                             Secure your future with trusted legal solutions
-                            designed for peace of mind. Whether it's estate
+                            designed for peace of mind. Whether it&apos;s estate
                             planning, will creation, or legal protection,
                             BharatNyay ensures your rights and assets are
                             safeguarded for a stress-free tomorrow.

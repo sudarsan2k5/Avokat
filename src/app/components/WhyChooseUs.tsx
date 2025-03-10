@@ -124,7 +124,7 @@ export default function WhyChooseUs() {
 
       {/* Quote mark */}
       <div className="text-slate-200 text-6xl md:text-9xl font-serif absolute left-4 md:left-10 top-1/2 transform -translate-y-1/2 opacity-30 md:opacity-50 z-0">
-        "
+        &quot;
       </div>
     </div>
   );
