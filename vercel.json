@@ -1,6 +1,0 @@
-{
-  "env": {
-    "MONGODB_URI": "mongodb+srv://sudarsan2k5:BharatNyay%40123@bharatnyay.4zj54.mongodb.net/"
-  },
-  "buildCommand": "next build"
-} 

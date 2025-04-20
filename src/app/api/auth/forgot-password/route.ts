@@ -16,34 +16,17 @@ export async function POST(request: Request) {
     }
 
     // Connect to database
-    try {
-      await dbConnect();
-    } catch (dbError) {
-      console.error('Database connection error:', dbError);
-      return NextResponse.json(
-        { success: false, message: 'Database connection failed' },
-        { status: 500 }
-      );
-    }
+    await dbConnect();
 
     // Find user by email
-    let user;
-    try {
-      user = await User.findOne({ email });
-      
-      // Check if user exists
-      if (!user) {
-        // For security reasons, don't reveal that the user doesn't exist
-        return NextResponse.json(
-          { success: true, message: 'If your email is registered, you will receive a password reset link' },
-          { status: 200 }
-        );
-      }
-    } catch (findError) {
-      console.error('Error finding user:', findError);
+    const user = await User.findOne({ email });
+    
+    // Check if user exists
+    if (!user) {
+      // For security reasons, don't reveal that the user doesn't exist
       return NextResponse.json(
-        { success: false, message: 'Error processing request' },
-        { status: 500 }
+        { success: true, message: 'If your email is registered, you will receive a password reset link' },
+        { status: 200 }
       );
     }
 
@@ -57,18 +40,10 @@ export async function POST(request: Request) {
       .digest('hex');
     
     // Set token expiry (10 minutes)
-    try {
-      user.resetPasswordToken = hashedToken;
-      user.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
-      
-      await user.save();
-    } catch (saveError) {
-      console.error('Error saving reset token:', saveError);
-      return NextResponse.json(
-        { success: false, message: 'Error processing request' },
-        { status: 500 }
-      );
-    }
+    user.resetPasswordToken = hashedToken;
+    user.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+    
+    await user.save();
 
     // In a real application, you would send an email with the reset link
     // For now, we'll just return the token in the response

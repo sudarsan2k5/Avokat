@@ -39,13 +39,7 @@ function LoginForm() {
           }),
         });
 
-        let data;
-        try {
-          data = await response.json();
-        } catch (jsonError) {
-          console.error('Error parsing JSON response:', jsonError);
-          throw new Error('Server returned an invalid response. Please try again later.');
-        }
+        const data = await response.json();
 
         if (!response.ok) {
           throw new Error(data.message || 'Login failed');
@@ -80,13 +74,7 @@ function LoginForm() {
           }),
         });
 
-        let data;
-        try {
-          data = await response.json();
-        } catch (jsonError) {
-          console.error('Error parsing JSON response:', jsonError);
-          throw new Error('Server returned an invalid response. Please try again later.');
-        }
+        const data = await response.json();
 
         if (!response.ok) {
           throw new Error(data.message || 'Registration failed');
@@ -106,7 +94,6 @@ function LoginForm() {
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong');
-      console.error('Form submission error:', err);
     } finally {
       setIsLoading(false);
     }

@@ -1,10 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-// Use environment variable or fallback to hardcoded value
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://sudarsan2k5:BharatNyay%40123@bharatnyay.4zj54.mongodb.net/';
+const MONGODB_URI = "Your db url";
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
+  throw new Error("Please define the MONGODB_URI environment variable");
 }
 
 /**
@@ -33,29 +32,14 @@ async function dbConnect() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      serverSelectionTimeoutMS: 10000, // Timeout after 10 seconds
-      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts)
-      .then((mongoose) => {
-        console.log('MongoDB connected successfully');
-        return mongoose;
-      })
-      .catch((err) => {
-        console.error('MongoDB connection error:', err);
-        cached.promise = null;
-        throw err;
-      });
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose;
+    });
   }
-
-  try {
-    cached.conn = await cached.promise;
-    return cached.conn;
-  } catch (e) {
-    cached.promise = null;
-    throw e;
-  }
+  cached.conn = await cached.promise;
+  return cached.conn;
 }
 
-export default dbConnect; 
+export default dbConnect;

@@ -15,33 +15,16 @@ export async function POST(request: Request) {
     }
 
     // Connect to database
-    try {
-      await dbConnect();
-    } catch (dbError) {
-      console.error('Database connection error:', dbError);
-      return NextResponse.json(
-        { success: false, message: 'Database connection failed' },
-        { status: 500 }
-      );
-    }
+    await dbConnect();
 
     // Find user by email and include password for comparison
-    let user;
-    try {
-      user = await User.findOne({ email }).select('+password');
-      
-      // Check if user exists
-      if (!user) {
-        return NextResponse.json(
-          { success: false, message: 'Invalid credentials' },
-          { status: 401 }
-        );
-      }
-    } catch (findError) {
-      console.error('Error finding user:', findError);
+    const user = await User.findOne({ email }).select('+password');
+    
+    // Check if user exists
+    if (!user) {
       return NextResponse.json(
-        { success: false, message: 'Error finding user' },
-        { status: 500 }
+        { success: false, message: 'Invalid credentials' },
+        { status: 401 }
       );
     }
 
@@ -59,19 +42,11 @@ export async function POST(request: Request) {
     }
 
     // Compare password
-    try {
-      const isPasswordValid = await user.comparePassword(password);
-      if (!isPasswordValid) {
-        return NextResponse.json(
-          { success: false, message: 'Invalid credentials' },
-          { status: 401 }
-        );
-      }
-    } catch (passwordError) {
-      console.error('Error comparing password:', passwordError);
+    const isPasswordValid = await user.comparePassword(password);
+    if (!isPasswordValid) {
       return NextResponse.json(
-        { success: false, message: 'Error validating credentials' },
-        { status: 500 }
+        { success: false, message: 'Invalid credentials' },
+        { status: 401 }
       );
     }
 
